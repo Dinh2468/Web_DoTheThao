@@ -1,0 +1,693 @@
+/* assets/css/admin_style.css */
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* KHUNG CHÍNH */
+body {
+    background-color: #f4f7f9;
+    /* Màu nền xám nhẹ */
+}
+
+.admin-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Màu nền sidebar cơ bản */
+.sidebar-menu li a {
+    color: #fff;
+    background-color: transparent;
+    /* Màu mặc định của mục menu */
+}
+
+/* 1. MÀU CỦA MỤC CHA (Quản lý Sản phẩm) KHI ĐANG ACTIVE */
+/* Đã có sẵn: màu xanh lá cây đậm (ví dụ: #4CAF50) */
+.sidebar-menu li.active>a {
+    background-color: #4CAF50;
+    /* Hoặc màu xanh lá cây đậm hiện tại của bạn */
+    color: #fff;
+}
+
+/* 2. ĐỊNH DẠNG SUBMENU (Danh sách Sản phẩm, Danh mục, NCC) */
+.sidebar-menu .submenu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: #3f5e55;
+    /* Màu nền submenu: Nên chọn màu đậm hơn hoặc giống màu nền sidebar (như #3f5e55 hoặc tương tự) */
+}
+
+/* 3. MÀU CHO CÁC MỤC CON ĐANG ACTIVE (Sản phẩm/Danh mục SP/NCC) */
+.sidebar-menu .submenu li.active a {
+    /* Màu xanh lá cây nhạt hơn cho mục con đang được chọn */
+    background-color: #66BB6A;
+    color: #fff;
+}
+
+/* 4. MÀU CHO CÁC MỤC CON KHÔNG ACTIVE */
+.sidebar-menu .submenu li a {
+    padding-left: 30px;
+    /* Thụt vào */
+    background-color: transparent;
+    /* Giữ màu nền submenu (xanh đậm/xám) */
+    font-size: 0.95em;
+    font-weight: 300;
+}
+
+/* Hiệu ứng hover cho mục con */
+.sidebar-menu .submenu li a:hover {
+    background-color: #558B2F;
+    /* Màu hover */
+}
+
+/* Trong assets/css/admin_style.css */
+.sidebar-menu .has-submenu .submenu {
+    display: none;
+    /* Quan trọng: Ẩn mặc định */
+    list-style: none;
+    padding-left: 15px;
+    /* Để submenu thụt vào một chút */
+}
+
+/* Tùy chọn: Nếu muốn mục active tự động mở ra khi tải trang */
+.sidebar-menu .has-submenu.active .submenu {
+    display: block;
+    /* Khi có class 'active' thì hiển thị */
+}
+
+/* ============================================== */
+/* 1. SIDEBAR (MENU TRÁI) */
+/* ============================================== */
+.sidebar {
+    width: 250px;
+    background-color: #3b594b;
+    /* Màu xanh lá đậm */
+    color: white;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    /* Cố định sidebar */
+    height: 100%;
+}
+
+.sidebar .logo-admin {
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #b7e8ba;
+    /* Màu sáng */
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-menu {
+    flex-grow: 1;
+}
+
+.sidebar-menu a {
+    display: block;
+    padding: 15px 20px;
+    font-size: 15px;
+    transition: background-color 0.2s;
+}
+
+.sidebar-menu a:hover {
+    background-color: #4a6c5a;
+    /* Màu hover */
+}
+
+.sidebar-menu .active a {
+    background-color: #4CAF50;
+    /* Màu xanh lá nổi bật cho trang đang chọn */
+    font-weight: bold;
+}
+
+.sidebar .copyright {
+    padding: 15px 20px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+}
+
+.sidebar-item:hover,
+.sidebar-item.active {
+    /* <-- Thêm .active vào đây */
+    background: #3c5d4c;
+    /* Màu xanh đậm khi hover/active */
+    color: #fff;
+    /* Nếu bạn muốn màu xanh nhạt hơn, hãy đổi mã màu */
+    /* Ví dụ: #588069 (xanh nhạt hơn) */
+}
+
+/* Quan trọng: Định nghĩa màu nền cho trạng thái active */
+.sidebar-item.active {
+    background-color: #588069;
+    /* Màu nền xanh nhạt cho mục đang chọn */
+    color: #fff;
+}
+
+/* Đảm bảo Trang chủ không bị ảnh hưởng nếu không phải trang chủ gốc */
+.sidebar-item {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+/* ============================================== */
+/* 2. KHU VỰC NỘI DUNG CHÍNH */
+/* ============================================== */
+.main-content-wrapper {
+    margin-left: 250px;
+    /* Bằng chiều rộng của sidebar */
+    width: calc(100% - 250px);
+    padding: 0;
+}
+
+.top-header {
+    background-color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    /* justify-content: flex-end; */
+    /* Đẩy nội dung sang phải */
+    align-items: center;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+}
+
+
+
+.user-info .username {
+    margin-right: 15px;
+    font-weight: 600;
+    /* font-weight: bold;
+    color: #3b594b; */
+}
+
+.user-info .logout {
+    color: #d9534f;
+}
+
+.welcome-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* Thêm khoảng cách giữa các phần tử */
+}
+
+.welcome-text {
+    color: #666;
+}
+
+/* NỘI DUNG DASHBOARD */
+.dashboard-content {
+    padding: 30px;
+}
+
+.dashboard-content h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+
+/* THẺ THỐNG KÊ */
+.stats-cards {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    flex: 1;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.stat-card .value {
+    font-size: 30px;
+    font-weight: bold;
+    color: #3b594b;
+}
+
+.stat-card .label {
+    font-size: 14px;
+    color: #666;
+}
+
+.stat-card .icon {
+    font-size: 36px;
+    color: #4CAF50;
+}
+
+/* BẢNG ĐƠN HÀNG GẦN ĐÂY */
+.recent-orders {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.recent-orders-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.recent-orders-header h3 {
+    font-size: 18px;
+    color: #333;
+}
+
+.export-btn {
+    background-color: #28a745;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.order-table th,
+.order-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+.order-table th {
+    background-color: #fafafa;
+    font-weight: 600;
+    color: #555;
+    text-align: left;
+}
+
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.status-badge.completed {
+    background-color: #e6f7d9;
+    /* Xanh lá nhạt */
+    color: #389e00;
+    /* Xanh lá đậm */
+}
+
+.status-badge.shipping {
+    background-color: #fff1b8;
+    /* Vàng nhạt */
+    color: #ad8b00;
+}
+
+.status-badge.cancelled {
+    background-color: #fff1f0;
+    /* Đỏ nhạt */
+    color: #cf1322;
+}
+
+.detail-link {
+    color: #1890ff;
+}
+
+/* assets/css/admin_style.css (Kiểm tra và thêm nếu thiếu) */
+
+.form-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    /* Dùng lại recent-orders CSS */
+}
+
+.form-group {
+    margin-bottom: 5px;
+    /* Giảm khoảng cách giữa các hàng */
+    padding: 8px 0;
+    display: flex;
+    /* Kích hoạt Flexbox */
+    align-items: center;
+    /* Căn chỉnh nội dung theo chiều dọc (label và value) */
+    border-bottom: 1px solid #eee;
+    /* Thêm đường kẻ dưới mỗi trường */
+}
+
+.form-group label {
+    /* Đặt chiều rộng cố định cho Label (Ví dụ: 150px) */
+    width: 150px;
+    min-width: 150px;
+    /* Đảm bảo chiều rộng không bị co lại */
+    font-weight: bold;
+    color: #3b594b;
+    margin-bottom: 0;
+    padding-top: 0;
+    /* Loại bỏ padding để căn chỉnh tốt hơn */
+}
+
+.form-group p,
+.form-group span {
+    margin: 0;
+    flex-grow: 1;
+    /* Cho phép phần nội dung chiếm hết không gian còn lại */
+    color: #333;
+    font-size: 14px;
+}
+
+.text-input,
+.text-input select,
+.text-input textarea,
+.form-group input:not([type="checkbox"]),
+/* Target tất cả inputs ngoại trừ checkbox */
+.form-group textarea {
+    /* Cho phép input chiếm phần còn lại của hàng */
+    /* width: 100%; */
+    flex-grow: 1;
+    /* <--- Quan trọng: Cho input chiếm phần còn lại */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* Sửa lại cho các thành phần form trong form-group */
+.form-group input,
+.form-group textarea {
+    /* Đảm bảo các input trực tiếp trong form-group hoạt động với flex-grow */
+    flex-grow: 1;
+    width: auto;
+    /* Bỏ width 100% cũ */
+}
+
+/* Style cho các thông báo lỗi/thành công (đã có) */
+.alert.cancelled {
+    background-color: #fff1f0;
+    color: #cf1322;
+    padding: 10px;
+    border: 1px solid #f5222d;
+    border-radius: 4px;
+}
+
+/* assets/css/admin_style.css (Bổ sung vào cuối file) */
+
+/* Định dạng cho Toast/Alert nổi bật */
+.alert.toast-fixed {
+    background-color: white;
+    position: fixed;
+    top: 20px;
+    /* Cách mép trên */
+    right: 20px;
+    /* Cách mép phải */
+    width: 300px;
+    /* Chiều rộng cố định */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    /* Thêm bóng đổ nổi bật */
+    z-index: 1000;
+    /* Luôn nằm trên cùng */
+    /* Dùng lại style alert cũ nhưng thêm border */
+    padding: 15px;
+    border-radius: 8px;
+    /* Bo tròn góc */
+    font-weight: bold;
+    /* opacity: 1; */
+    /* Mặc định là hiển thị */
+}
+
+/* ================================== */
+/* 5. ĐỊNH DẠNG CHUNG CỦA CONTENT */
+/* ================================== */
+
+.dashboard-content {
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+/* ================================== */
+/* 6. TABLE VÀ DỮ LIỆU */
+/* ================================== */
+
+.table-responsive {
+    overflow-x: auto;
+    margin-top: 15px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px;
+    /* Đảm bảo bảng không quá hẹp trên màn hình nhỏ */
+}
+
+.data-table thead th {
+    background-color: #f8f9fa;
+    color: #333;
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+    font-weight: 600;
+}
+
+.data-table tbody td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    color: #555;
+    vertical-align: middle;
+}
+
+.data-table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Định dạng liên kết trong bảng */
+.data-table a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.data-table a:hover {
+    text-decoration: underline;
+}
+
+/* Định dạng cột ID (nhỏ hơn) */
+.data-table tr td:first-child {
+    width: 5%;
+    font-weight: bold;
+    color: #000;
+}
+
+/* ================================== */
+/* 7. ALERT VÀ BUTTON */
+/* ================================== */
+
+.alert {
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+}
+
+.alert.completed {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+.alert.pending {
+    background-color: #fff3cd;
+    color: #856404;
+    border-color: #ffeeba;
+}
+
+/* Nút Thêm mới (export-btn) */
+p .export-btn {
+    display: inline-block;
+    padding: 10px 15px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    margin-bottom: 20px;
+}
+
+p .export-btn:hover {
+    background-color: #218838 !important;
+    /* Màu xanh đậm hơn */
+    text-decoration: none;
+}
+
+/* ================================== */
+/* 8. ACTION LINKS (Sửa | Xóa) */
+/* ================================== */
+
+.action-link {
+    font-size: 0.9em;
+    font-weight: 500;
+    margin: 0 5px;
+}
+
+.action-link.edit {
+    color: #007bff;
+    /* Xanh dương */
+}
+
+.action-link.delete {
+    color: #dc3545;
+    /* Đỏ */
+}
+
+/* ================================== */
+/* 9. TRANG CHI TIẾT (DETAIL) */
+/* ================================== */
+
+.detail-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.detail-group {
+    flex: 1 1 100%;
+    /* Chiếm toàn bộ chiều rộng ban đầu */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.detail-header {
+    flex: 1 1 100%;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.detail-info-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    flex: 1 1 calc(50% - 10px);
+    /* Chia thành 2 cột trên màn hình lớn */
+}
+
+.detail-info-card.full-width {
+    flex: 1 1 100%;
+}
+
+.detail-info-card h2 {
+    font-size: 1.4em;
+    color: #34495e;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dotted #f0f0f0;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-row label {
+    font-weight: 500;
+    color: #7f8c8d;
+    min-width: 150px;
+}
+
+.info-row span,
+.info-row strong {
+    color: #333;
+    font-weight: 400;
+}
+
+.info-row strong {
+    font-weight: 600;
+}
+
+.info-row .price {
+    color: #e74c3c;
+    /* Màu đỏ cho giá */
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.info-row .stock {
+    color: #27ae60;
+    /* Màu xanh cho tồn kho */
+    font-weight: bold;
+}
+
+.mo-ta-box {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    /* Giữ định dạng xuống dòng */
+}
+
+/* Nút Xóa trong detail */
+.delete-btn:hover {
+    background-color: #c82333 !important;
+}
+
+/* Điều chỉnh lại nút chức năng cho phù hợp */
+.detail-header .export-btn {
+    padding: 8px 12px;
+}
