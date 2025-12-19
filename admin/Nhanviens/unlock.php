@@ -10,16 +10,16 @@ if ($nhanvien_id > 0) {
     $result = $controller->unlockHandler($nhanvien_id);
 
     if ($result['success']) {
-        // Chuyển hướng về trang chi tiết nhân viên với thông báo thành công
+
         header("Location: detail.php?id=$nhanvien_id&status=success_unlock");
         exit();
     } else {
-        // Chuyển hướng về trang chi tiết với thông báo lỗi
+
         header("Location: detail.php?id=$nhanvien_id&status=error_unlock");
         exit();
     }
 } else {
-    // ID không hợp lệ, chuyển hướng về trang danh sách
+
     header("Location: index.php?status=error_invalid_id");
     exit();
 }
