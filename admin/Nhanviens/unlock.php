@@ -3,13 +3,11 @@
 
 require_once '../../config/connect.php';
 require_once '../../controller/NhanvienController.php';
-
-// Đảm bảo phải có ID
 $nhanvien_id = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
 if ($nhanvien_id > 0) {
     $controller = new NhanvienController();
-    $result = $controller->unlockHandler($nhanvien_id); // Gọi hàm mở khóa tài khoản (status = 1)
+    $result = $controller->unlockHandler($nhanvien_id);
 
     if ($result['success']) {
         // Chuyển hướng về trang chi tiết nhân viên với thông báo thành công
