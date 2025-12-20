@@ -44,7 +44,7 @@ require_once '../includes/header.php';
             $image_path = BASE_URL . 'assets/images/sanphams/';
             foreach ($sanphams as $sanpham): ?>
                 <div class="product-item">
-                    <a href="<?php echo BASE_URL; ?>products/detail.php?id=<?php echo $sanpham->sanpham_id; ?>" class="product-link">
+                    <a href="<?php echo BASE_URL; ?>View/Sanphams/detail.php?id=<?php echo $sanpham->sanpham_id; ?>" class="product-link">
                         <div class="product-image-wrapper">
                             <img
                                 src="<?php echo $image_path . htmlspecialchars($sanpham->hinh_anh); ?>"
@@ -53,7 +53,7 @@ require_once '../includes/header.php';
                         <div class="product-info">
                             <p class="product-name"><?php echo htmlspecialchars($sanpham->ten_sanpham); ?></p>
                             <p class="product-price"><?php echo number_format($sanpham->gia, 0, ',', '.'); ?>đ</p>
-                            <form action="<?php echo BASE_URL; ?>controller/GiohangController.php" method="POST" style="margin-top: 10px;">
+                            <form action="<?php echo BASE_URL; ?>controller/GiohangController.php" method="POST" class="ajax-cart-form" style="margin-top: 10px;">
                                 <input type="hidden" name="action" value="add">
                                 <input type="hidden" name="sanpham_id" value="<?php echo $sanpham->sanpham_id; ?>">
                                 <input type="hidden" name="quantity" value="1">
